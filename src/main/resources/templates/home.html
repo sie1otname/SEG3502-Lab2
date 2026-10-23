@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculatrice - Labo 2</title><link rel="stylesheet" th:href="@{/style.css}"></head>
+<body><main><h1>Calculatrice</h1><p>Laboratoire 2 - Spring MVC</p>
+<form th:action="@{/calculate}" method="get">
+<label for="first">Premier nombre</label><input id="first" name="first" type="text" required th:value="${first}">
+<label for="operation">Opération</label><select id="operation" name="operation">
+<option value="+" th:selected="${operation == '+'}">Addition (+)</option>
+<option value="-" th:selected="${operation == '-'}">Soustraction (-)</option>
+<option value="*" th:selected="${operation == '*'}">Multiplication (×)</option>
+<option value="/" th:selected="${operation == '/'}">Division (÷)</option>
+</select>
+<label for="second">Deuxième nombre</label><input id="second" name="second" type="text" required th:value="${second}">
+<button type="submit">Calculer</button></form>
+<p class="result" th:if="${result != null}" th:text="'Résultat : ' + ${result}"></p>
+<p class="error" th:if="${error != null}" th:text="${error}"></p>
+</main></body></html>
